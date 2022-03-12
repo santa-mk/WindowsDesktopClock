@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WindowsDesktopClock.src.Model;
+using System.Threading;
 
 namespace WindowsDesktopClock
 {
@@ -21,13 +22,33 @@ namespace WindowsDesktopClock
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Date _date;
+        private Timer _timer;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            Date date = new Date();
-            this.DataContext = date;
-            date.update();
+
+            initializeDateText();
+            startTimer();
+        }
+
+        private void initializeDateText()
+        {
+            _date = new Date();
+            this.DataContext = _date;
+            _date.update();
+        }
+
+        private void startTimer()
+        {
+            TimerCallback timerCallback = state =>
+            {
+                _date.update();
+            };
+
+            _timer = new Timer(timerCallback, null, 0, 1000);
         }
     }
 }
