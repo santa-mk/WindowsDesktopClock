@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WindowsDesktopClock.src.Model;
 
 namespace WindowsDesktopClock
 {
@@ -23,6 +24,10 @@ namespace WindowsDesktopClock
         public MainWindow()
         {
             InitializeComponent();
+
+            Date date = new Date();
+            this.DataContext = date;
+            date.update();
         }
     }
 }
