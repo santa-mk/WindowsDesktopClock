@@ -8,8 +8,7 @@ namespace WindowsDesktopClock.src.Model
 {
     public class Date : BindableBase
     {
-        private DateTime _Datetime { get; set; }
-        private string _DatetimeStr;
+        private string _DatetimeStr = "";
 
         public string DateTime
         {
@@ -19,8 +18,7 @@ namespace WindowsDesktopClock.src.Model
 
         public void update()
         {
-            _Datetime = System.DateTime.Now;
-            _DatetimeStr = _Datetime.ToString();
+            DateTime = System.DateTime.Now.ToString();
         }
     }
 }
