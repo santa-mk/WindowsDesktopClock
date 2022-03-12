@@ -29,7 +29,6 @@ namespace WindowsDesktopClock
         {
             InitializeComponent();
 
-
             initializeDateText();
             startTimer();
         }
